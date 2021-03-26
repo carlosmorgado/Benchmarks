@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>BenchmarksRunner.Benchmark-20210326-193209</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19041.867 (2004/?/20H1)
+AMD Ryzen 9 3900X, 1 CPU, 24 logical and 12 physical cores
+.NET Core SDK=5.0.201
+  [Host]     : .NET Core 5.0.4 (CoreCLR 5.0.421.11614, CoreFX 5.0.421.11614), X64 RyuJIT
+  Job-BDGZRO : .NET Core 3.1.13 (CoreCLR 4.700.21.11102, CoreFX 4.700.21.11602), X64 RyuJIT
+  Job-BZEIXH : .NET Core 5.0.4 (CoreCLR 5.0.421.11614, CoreFX 5.0.421.11614), X64 RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                                    Method</th><th> Job</th><th>Runtime</th><th>Toolchain</th><th>source</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>ToStringWithStringInterpolationAndConcat</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>423.9 ns</td><td>3.68 ns</td><td>3.44 ns</td><td>1.00</td><td>0.00</td><td>0.0849</td><td>-</td><td>-</td><td>712 B</td>
+</tr><tr><td>ToStringWithStringInterpolationAndConcatNoBoxing</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>208.2 ns</td><td>3.34 ns</td><td>2.79 ns</td><td>0.49</td><td>0.01</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
+</tr><tr><td>ToStringWithStringInterpolation</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>780.7 ns</td><td>6.72 ns</td><td>6.29 ns</td><td>1.84</td><td>0.03</td><td>0.0648</td><td>-</td><td>-</td><td>544 B</td>
+</tr><tr><td>ToStringWithStringInterpolationNoBoxing</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>208.7 ns</td><td>3.97 ns</td><td>3.72 ns</td><td>0.49</td><td>0.01</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
+</tr><tr><td>ToStringWithStringBuilder</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>347.9 ns</td><td>4.96 ns</td><td>4.40 ns</td><td>0.82</td><td>0.01</td><td>0.1516</td><td>0.0005</td><td>-</td><td>1272 B</td>
+</tr><tr><td>ToStringWithStringInterpolationAndConcat</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>322.8 ns</td><td>3.73 ns</td><td>3.31 ns</td><td>0.76</td><td>0.01</td><td>0.0849</td><td>-</td><td>-</td><td>712 B</td>
+</tr><tr><td>ToStringWithStringInterpolationAndConcatNoBoxing</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>183.6 ns</td><td>2.50 ns</td><td>2.34 ns</td><td>0.43</td><td>0.01</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
+</tr><tr><td>ToStringWithStringInterpolation</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>595.0 ns</td><td>10.87 ns</td><td>10.17 ns</td><td>1.40</td><td>0.03</td><td>0.0648</td><td>-</td><td>-</td><td>544 B</td>
+</tr><tr><td>ToStringWithStringInterpolationNoBoxing</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>182.9 ns</td><td>1.72 ns</td><td>1.61 ns</td><td>0.43</td><td>0.00</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
+</tr><tr><td>ToStringWithStringBuilder</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>334.6 ns</td><td>6.69 ns</td><td>9.80 ns</td><td>0.79</td><td>0.03</td><td>0.1516</td><td>0.0005</td><td>-</td><td>1272 B</td>
+</tr></tbody></table>
+</body>
+</html>
