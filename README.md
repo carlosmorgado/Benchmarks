@@ -1,18 +1,18 @@
-# New Repo Project
+# Benchmarks
 
-The new-repo project is a default template for .NET Foundation projects. It's also probably a fine start for other .NET projects (have at it, but change the license). It contains the correct license, a decent README, and initial project structure (including a standard .gitignore for the Visual Studio family of products).
+This repository contains a series of benchmarks.
 
 You can learn more about the project from the project [Documentation](Documentation).
 
-## Using New Repo
+## Running
 
-You can simply `git clone` this project to get started. It is recommended that you don't preserve history of the project (it isn't generally meaningful) for your repo, but make a copy and `git init` your project from source.
+To run the project open a terminal in the root directory and run the following command.
 
-Consult [CHECKLIST.md] for helpful suggestions on preparing your repo to go public.
+`dotnet run -c Release -p .\BenchmarksRunner -f net5.0 -- --filter * --runtimes netcoreapp3.1 netcoreapp5.0 --exporters GitHub --memory --maxWidth 256`
 
-## Building
+If only one runtime is intended in `--runtimes` pass only the one intended.
 
-You don't "build" New Repo, however, this will be meaningful for many other projects.
+The output can be fount in [BenchmarkDotNet.Artifacts](BenchmarkDotNet.Artifacts/results).
 
 ## Contributing
 
@@ -25,14 +25,9 @@ to clarify expected behavior in our community. For more information, see the [.N
 
 This project is licensed with the [MIT license](LICENSE).
 
-## .NET Foundation
-
-New Repo is a [.NET Foundation project](https://dotnetfoundation.org/projects).
-
 ## Related Projects
 
 You should take a look at these related projects:
 
 - [.NET Core](https://github.com/dotnet/core)
-- [ASP.NET](https://github.com/aspnet)
-- [Mono](https://github.com/mono)
+- [BenchmarkDotNet](https://benchmarkdotnet.org/)
