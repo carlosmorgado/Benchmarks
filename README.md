@@ -8,11 +8,16 @@ You can learn more about the project from the project [Documentation](Documentat
 
 To run the project open a terminal in the root directory and run the following command.
 
-`dotnet run -c Release -p .\BenchmarksRunner -f net5.0 -- --filter * --runtimes netcoreapp3.1 netcoreapp5.0 --exporters GitHub --memory --maxWidth 256`
+`dotnet run -c Release -p .\{BenchmarkName} -f net5.0 -- --filter * --runtimes netcoreapp3.1 netcoreapp5.0 --exporters GitHub --memory --maxWidth 256`
 
 If only one runtime is intended in `--runtimes` pass only the one intended.
 
-The output can be fount in [BenchmarkDotNet.Artifacts](BenchmarkDotNet.Artifacts/results).
+The output can be fount in [BenchmarkDotNet.Artifacts](BenchmarkDotNet.Artifacts/results
+
+## BenchmarkNames
+
+ - StringBenchmarks
+
 
 ## Contributing
 

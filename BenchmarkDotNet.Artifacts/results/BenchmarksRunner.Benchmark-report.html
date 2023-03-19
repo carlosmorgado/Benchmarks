@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>BenchmarksRunner.Benchmark-20210326-193209</title>
+<title>BenchmarksRunner.Benchmark-20230319-224147</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -13,28 +13,29 @@
 </head>
 <body>
 <pre><code>
-BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19041.867 (2004/?/20H1)
+BenchmarkDotNet=v0.13.5, OS=Windows 11 (10.0.22000.1696/21H2/SunValley)
 AMD Ryzen 9 3900X, 1 CPU, 24 logical and 12 physical cores
-.NET Core SDK=5.0.201
-  [Host]     : .NET Core 5.0.4 (CoreCLR 5.0.421.11614, CoreFX 5.0.421.11614), X64 RyuJIT
-  Job-BDGZRO : .NET Core 3.1.13 (CoreCLR 4.700.21.11102, CoreFX 4.700.21.11602), X64 RyuJIT
-  Job-BZEIXH : .NET Core 5.0.4 (CoreCLR 5.0.421.11614, CoreFX 5.0.421.11614), X64 RyuJIT
+.NET SDK=7.0.300-preview.23122.5
+  [Host]     : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+  Job-LAMIWF : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
 </code></pre>
-<pre><code></code></pre>
+<pre><code>Runtime=.NET 6.0  Toolchain=net60  
+</code></pre>
 
 <table>
-<thead><tr><th>                                    Method</th><th> Job</th><th>Runtime</th><th>Toolchain</th><th>source</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Gen 0</th><th>Gen 1</th><th>Gen 2</th><th>Allocated</th>
+<thead><tr><th>                                                      Method</th><th>                                                     logger</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th><th>RatioSD</th><th>Allocated</th><th>Alloc Ratio</th>
 </tr>
-</thead><tbody><tr><td>ToStringWithStringInterpolationAndConcat</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>423.9 ns</td><td>3.68 ns</td><td>3.44 ns</td><td>1.00</td><td>0.00</td><td>0.0849</td><td>-</td><td>-</td><td>712 B</td>
-</tr><tr><td>ToStringWithStringInterpolationAndConcatNoBoxing</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>208.2 ns</td><td>3.34 ns</td><td>2.79 ns</td><td>0.49</td><td>0.01</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
-</tr><tr><td>ToStringWithStringInterpolation</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>780.7 ns</td><td>6.72 ns</td><td>6.29 ns</td><td>1.84</td><td>0.03</td><td>0.0648</td><td>-</td><td>-</td><td>544 B</td>
-</tr><tr><td>ToStringWithStringInterpolationNoBoxing</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>208.7 ns</td><td>3.97 ns</td><td>3.72 ns</td><td>0.49</td><td>0.01</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
-</tr><tr><td>ToStringWithStringBuilder</td><td>Job-BDGZRO</td><td>.NET Core 3.1</td><td>netcoreapp3.1</td><td>1</td><td>347.9 ns</td><td>4.96 ns</td><td>4.40 ns</td><td>0.82</td><td>0.01</td><td>0.1516</td><td>0.0005</td><td>-</td><td>1272 B</td>
-</tr><tr><td>ToStringWithStringInterpolationAndConcat</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>322.8 ns</td><td>3.73 ns</td><td>3.31 ns</td><td>0.76</td><td>0.01</td><td>0.0849</td><td>-</td><td>-</td><td>712 B</td>
-</tr><tr><td>ToStringWithStringInterpolationAndConcatNoBoxing</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>183.6 ns</td><td>2.50 ns</td><td>2.34 ns</td><td>0.43</td><td>0.01</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
-</tr><tr><td>ToStringWithStringInterpolation</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>595.0 ns</td><td>10.87 ns</td><td>10.17 ns</td><td>1.40</td><td>0.03</td><td>0.0648</td><td>-</td><td>-</td><td>544 B</td>
-</tr><tr><td>ToStringWithStringInterpolationNoBoxing</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>182.9 ns</td><td>1.72 ns</td><td>1.61 ns</td><td>0.43</td><td>0.00</td><td>0.0715</td><td>-</td><td>-</td><td>600 B</td>
-</tr><tr><td>ToStringWithStringBuilder</td><td>Job-BZEIXH</td><td>.NET Core 5.0</td><td>netcoreapp5.0</td><td>1</td><td>334.6 ns</td><td>6.69 ns</td><td>9.80 ns</td><td>0.79</td><td>0.03</td><td>0.1516</td><td>0.0005</td><td>-</td><td>1272 B</td>
+</thead><tbody><tr><td>LogInformation</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>242.3 &mu;s</td><td>3.91 &mu;s</td><td>4.02 &mu;s</td><td>1.00</td><td>0.00</td><td>144 B</td><td>1.00</td>
+</tr><tr><td>LogInformationWithTemplate</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>237.8 &mu;s</td><td>4.61 &mu;s</td><td>4.31 &mu;s</td><td>0.98</td><td>0.02</td><td>144 B</td><td>1.00</td>
+</tr><tr><td>LoggerMessageWithLogNewEventId</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>238.8 &mu;s</td><td>3.76 &mu;s</td><td>3.33 &mu;s</td><td>0.99</td><td>0.02</td><td>152 B</td><td>1.06</td>
+</tr><tr><td>LoggerMessageWithLogExistingEventId</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>239.8 &mu;s</td><td>4.40 &mu;s</td><td>4.12 &mu;s</td><td>0.99</td><td>0.02</td><td>152 B</td><td>1.06</td>
+</tr><tr><td>LoggerMessageWithLogExistingEventIdAndTemplate</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>241.6 &mu;s</td><td>2.85 &mu;s</td><td>2.66 &mu;s</td><td>1.00</td><td>0.02</td><td>152 B</td><td>1.06</td>
+</tr><tr><td>LogInformationWithParametersAndStringInterpolation</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>244.5 &mu;s</td><td>4.32 &mu;s</td><td>3.83 &mu;s</td><td>1.01</td><td>0.03</td><td>224 B</td><td>1.56</td>
+</tr><tr><td>LogInformationWithParametersAndString</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>244.2 &mu;s</td><td>2.40 &mu;s</td><td>2.25 &mu;s</td><td>1.01</td><td>0.02</td><td>400 B</td><td>2.78</td>
+</tr><tr><td>LogInformationWithParametersAndStringWithTemplate</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>239.6 &mu;s</td><td>3.87 &mu;s</td><td>3.23 &mu;s</td><td>0.99</td><td>0.01</td><td>400 B</td><td>2.78</td>
+</tr><tr><td>LoggerMessageWithParametersAndStringWithNewEventId</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>241.5 &mu;s</td><td>4.73 &mu;s</td><td>4.42 &mu;s</td><td>1.00</td><td>0.03</td><td>352 B</td><td>2.44</td>
+</tr><tr><td>LoggerMessageWithParametersAndStringWithExistingEventId</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>240.2 &mu;s</td><td>4.55 &mu;s</td><td>4.26 &mu;s</td><td>0.99</td><td>0.03</td><td>352 B</td><td>2.44</td>
+</tr><tr><td>LoggerMessageWithParametersAndStringWithExistingEventIdAndTemplate</td><td>Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark]</td><td>239.7 &mu;s</td><td>3.85 &mu;s</td><td>3.42 &mu;s</td><td>0.99</td><td>0.03</td><td>352 B</td><td>2.44</td>
 </tr></tbody></table>
 </body>
 </html>

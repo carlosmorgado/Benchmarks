@@ -1,23 +1,24 @@
 ``` ini
 
-BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19041.867 (2004/?/20H1)
+BenchmarkDotNet=v0.13.5, OS=Windows 11 (10.0.22000.1696/21H2/SunValley)
 AMD Ryzen 9 3900X, 1 CPU, 24 logical and 12 physical cores
-.NET Core SDK=5.0.201
-  [Host]     : .NET Core 5.0.4 (CoreCLR 5.0.421.11614, CoreFX 5.0.421.11614), X64 RyuJIT
-  Job-BDGZRO : .NET Core 3.1.13 (CoreCLR 4.700.21.11102, CoreFX 4.700.21.11602), X64 RyuJIT
-  Job-BZEIXH : .NET Core 5.0.4 (CoreCLR 5.0.421.11614, CoreFX 5.0.421.11614), X64 RyuJIT
+.NET SDK=7.0.300-preview.23122.5
+  [Host]     : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+  Job-LAMIWF : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
 
+Runtime=.NET 6.0  Toolchain=net60  
 
 ```
-|                                           Method |        Job |       Runtime |     Toolchain | source |     Mean |    Error |   StdDev | Ratio | RatioSD |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
-|------------------------------------------------- |----------- |-------------- |-------------- |------- |---------:|---------:|---------:|------:|--------:|-------:|-------:|------:|----------:|
-|         ToStringWithStringInterpolationAndConcat | Job-BDGZRO | .NET Core 3.1 | netcoreapp3.1 |      1 | 423.9 ns |  3.68 ns |  3.44 ns |  1.00 |    0.00 | 0.0849 |      - |     - |     712 B |
-| ToStringWithStringInterpolationAndConcatNoBoxing | Job-BDGZRO | .NET Core 3.1 | netcoreapp3.1 |      1 | 208.2 ns |  3.34 ns |  2.79 ns |  0.49 |    0.01 | 0.0715 |      - |     - |     600 B |
-|                  ToStringWithStringInterpolation | Job-BDGZRO | .NET Core 3.1 | netcoreapp3.1 |      1 | 780.7 ns |  6.72 ns |  6.29 ns |  1.84 |    0.03 | 0.0648 |      - |     - |     544 B |
-|          ToStringWithStringInterpolationNoBoxing | Job-BDGZRO | .NET Core 3.1 | netcoreapp3.1 |      1 | 208.7 ns |  3.97 ns |  3.72 ns |  0.49 |    0.01 | 0.0715 |      - |     - |     600 B |
-|                        ToStringWithStringBuilder | Job-BDGZRO | .NET Core 3.1 | netcoreapp3.1 |      1 | 347.9 ns |  4.96 ns |  4.40 ns |  0.82 |    0.01 | 0.1516 | 0.0005 |     - |    1272 B |
-|         ToStringWithStringInterpolationAndConcat | Job-BZEIXH | .NET Core 5.0 | netcoreapp5.0 |      1 | 322.8 ns |  3.73 ns |  3.31 ns |  0.76 |    0.01 | 0.0849 |      - |     - |     712 B |
-| ToStringWithStringInterpolationAndConcatNoBoxing | Job-BZEIXH | .NET Core 5.0 | netcoreapp5.0 |      1 | 183.6 ns |  2.50 ns |  2.34 ns |  0.43 |    0.01 | 0.0715 |      - |     - |     600 B |
-|                  ToStringWithStringInterpolation | Job-BZEIXH | .NET Core 5.0 | netcoreapp5.0 |      1 | 595.0 ns | 10.87 ns | 10.17 ns |  1.40 |    0.03 | 0.0648 |      - |     - |     544 B |
-|          ToStringWithStringInterpolationNoBoxing | Job-BZEIXH | .NET Core 5.0 | netcoreapp5.0 |      1 | 182.9 ns |  1.72 ns |  1.61 ns |  0.43 |    0.00 | 0.0715 |      - |     - |     600 B |
-|                        ToStringWithStringBuilder | Job-BZEIXH | .NET Core 5.0 | netcoreapp5.0 |      1 | 334.6 ns |  6.69 ns |  9.80 ns |  0.79 |    0.03 | 0.1516 | 0.0005 |     - |    1272 B |
+|                                                             Method |                                                            logger |     Mean |   Error |  StdDev | Ratio | RatioSD | Allocated | Alloc Ratio |
+|------------------------------------------------------------------- |------------------------------------------------------------------ |---------:|--------:|--------:|------:|--------:|----------:|------------:|
+|                                                     LogInformation | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 242.3 μs | 3.91 μs | 4.02 μs |  1.00 |    0.00 |     144 B |        1.00 |
+|                                         LogInformationWithTemplate | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 237.8 μs | 4.61 μs | 4.31 μs |  0.98 |    0.02 |     144 B |        1.00 |
+|                                     LoggerMessageWithLogNewEventId | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 238.8 μs | 3.76 μs | 3.33 μs |  0.99 |    0.02 |     152 B |        1.06 |
+|                                LoggerMessageWithLogExistingEventId | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 239.8 μs | 4.40 μs | 4.12 μs |  0.99 |    0.02 |     152 B |        1.06 |
+|                     LoggerMessageWithLogExistingEventIdAndTemplate | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 241.6 μs | 2.85 μs | 2.66 μs |  1.00 |    0.02 |     152 B |        1.06 |
+|                 LogInformationWithParametersAndStringInterpolation | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 244.5 μs | 4.32 μs | 3.83 μs |  1.01 |    0.03 |     224 B |        1.56 |
+|                              LogInformationWithParametersAndString | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 244.2 μs | 2.40 μs | 2.25 μs |  1.01 |    0.02 |     400 B |        2.78 |
+|                  LogInformationWithParametersAndStringWithTemplate | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 239.6 μs | 3.87 μs | 3.23 μs |  0.99 |    0.01 |     400 B |        2.78 |
+|                 LoggerMessageWithParametersAndStringWithNewEventId | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 241.5 μs | 4.73 μs | 4.42 μs |  1.00 |    0.03 |     352 B |        2.44 |
+|            LoggerMessageWithParametersAndStringWithExistingEventId | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 240.2 μs | 4.55 μs | 4.26 μs |  0.99 |    0.03 |     352 B |        2.44 |
+| LoggerMessageWithParametersAndStringWithExistingEventIdAndTemplate | Microsoft.Extensions.Logging.Logger`1[BenchmarksRunner.Benchmark] | 239.7 μs | 3.85 μs | 3.42 μs |  0.99 |    0.03 |     352 B |        2.44 |
